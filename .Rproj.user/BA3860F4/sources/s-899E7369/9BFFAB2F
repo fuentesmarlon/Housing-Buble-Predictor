@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1635903080134.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9BFFAB2F",
+    "lastKnownWriteTime" : 1636040577,
+    "last_content_update" : 1636040577789,
+    "path" : "~/Tesis/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "cursorPosition" : "132,39",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

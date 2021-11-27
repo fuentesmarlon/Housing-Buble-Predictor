@@ -1,0 +1,9 @@
+library(reticulate)
+
+#use_python("C:/Users/Marlon/AppData/Local/Programs/Python/Python37",required = TRUE)
+
+#repl_python()
+
+source_python("main.py")
+
+main()

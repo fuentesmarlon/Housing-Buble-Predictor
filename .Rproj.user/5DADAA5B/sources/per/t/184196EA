@@ -1,0 +1,27 @@
+{
+    "id": "184196EA",
+    "path": "~/Tesis/ui.R",
+    "project_path": "ui.R",
+    "type": "r_source",
+    "hash": "1709133333",
+    "contents": "",
+    "dirty": false,
+    "created": 1635707044362.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "27,18",
+        "scrollLine": "27"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1635711072,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1635711072302,
+    "read_only": false,
+    "read_only_alternatives": []
+}

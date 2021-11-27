@@ -1,0 +1,94 @@
+
+
+shinyServer(function(input,output,session){
+  
+  output$activa_graph <- renderHighchart({
+    data <- df_activa
+    
+    data_real <- df_real
+  
+    
+    highchart()%>%
+      hc_chart(animation=TRUE)%>%
+      hc_xAxis(categories=as.Date(df_joined$FECHA))%>%
+      
+      hc_add_series(data=df_joined$FORECAST_ACTIVA,type="line",name="Forecast Interes Activo",color="red")%>%
+    hc_add_series(data=df_joined$ACTIVA_REAL[df_joined$ACTIVA_REAL>0],type="line",name="Real Interes Activo",color="black")
+    
+    
+  })
+  
+  
+  output$pasiva_graph <- renderHighchart({
+    data <- df_pasiva
+    
+    data_real <- df_real
+    
+    
+    highchart()%>%
+      hc_chart(animation=TRUE)%>%
+      hc_xAxis(categories=as.Date(df_joined$FECHA))%>%
+      
+      hc_add_series(data=df_joined$FORECAST_PASIVA,type="line",name="Forecast Interes Pasivo",color="green")%>%
+      hc_add_series(data=df_joined$PASIVA_REAL[df_joined$PASIVA_REAL>0],type="line",name="Real Interes Pasivo",color="black")
+    
+    
+  })
+  
+  output$activa_tabla <- renderReactable({
+    data <- df_joined%>%
+      select(FECHA, ACTIVA_REAL, FORECAST_ACTIVA)
+    
+    reactable(
+      data,resizable=TRUE, defaultPageSize = nrow(data), onClick="expand",highlight=TRUE, 
+      theme=reactableTheme(
+        headerStyle = list(background="#2171B5",color="white")
+      ),
+      columns=list(
+        ACTIVA_REAL=colDef(name="Tasa Activa Real", cel=function(value,index){
+          args <- list(prettyNum(round(value,2),big.mark=","))
+        }
+          
+          ),
+        FORECAST_ACTIVA=colDef(name="Tasa Activa Proyectada", cel=function(value,index){
+          args <- list(prettyNum(round(value,2),big.mark=","))
+        }
+        
+        )
+      )
+    )
+      
+  
+    
+    
+  })
+  
+  output$pasiva_tabla <- renderReactable({
+    data <- df_joined%>%
+      select(FECHA, PASIVA_REAL, FORECAST_PASIVA)
+    
+    reactable(
+      data,resizable=TRUE, defaultPageSize = nrow(data), onClick="expand",highlight=TRUE, 
+      theme=reactableTheme(
+        headerStyle = list(background="#2171B5",color="white")
+      ),
+      columns=list(
+        PASIVA_REAL=colDef(name="Tasa Pasiva Real", cel=function(value,index){
+          args <- list(prettyNum(round(value,2),big.mark=","))
+        }
+        
+        ),
+        FORECAST_PASIVA=colDef(name="Tasa Pasiva Proyectada", cel=function(value,index){
+          args <- list(prettyNum(round(value,2),big.mark=","))
+        }
+        
+        )
+      )
+    )
+    
+    
+  })
+
+  
+  
+})

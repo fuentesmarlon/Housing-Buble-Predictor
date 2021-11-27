@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1636047005979.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8801001A",
+    "lastKnownWriteTime" : 1636142958,
+    "last_content_update" : 1636142958634,
+    "path" : "~/Tesis/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+        "cursorPosition" : "19,62",
+        "disableDependencyDiscovery" : "1",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

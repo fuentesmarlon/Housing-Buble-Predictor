@@ -1,0 +1,50 @@
+library(reactable)
+library(highcharter)
+library(shinyjs)
+library(readxl)
+library(sqldf)
+library(dplyr)
+library(reticulate)
+
+use_virtualenv("env")
+
+source_python("predictor.py")
+
+
+
+
+
+df_real <- as.data.frame(read_excel("./data_modelo/master.xlsx"))
+
+
+real_activa <- df_real%>%
+  select(FECHA,ACTIVA)%>%
+  ungroup()
+
+real_pasiva <- df_pasiva%>%
+  select(FECHA,PASIVA)%>%
+  ungroup()
+
+
+
+df_activa <- as.data.frame(read_excel("./forecast_result/activa.xlsx"))
+
+df_pasiva <- as.data.frame(read_excel("./forecast_result/pasiva.xlsx"))
+
+df_joined <- sqldf("
+                  select fecha FECHA, sum(activa) ACTIVA_REAL, sum(pasiva) PASIVA_REAL, sum(activa_forecast) FORECAST_ACTIVA, sum(pasiva_forecast) FORECAST_PASIVA
+                  from (
+                   select a.FECHA, a.ACTIVA, a.PASIVA, 0 activa_forecast,0 pasiva_forecast
+                   from df_real a 
+                   UNION ALL 
+                   SELECT FECHA, 0,0, B.ACTIVA,0
+                   FROM  df_activa b 
+                   union all
+                   select FECHA, 0,0,0,c.PASIVA
+                   from df_pasiva c
+                  )
+                  group by fecha
+                   
+                   ")
+
+

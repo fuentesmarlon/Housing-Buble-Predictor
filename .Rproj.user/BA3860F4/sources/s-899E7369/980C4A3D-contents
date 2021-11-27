@@ -1,0 +1,33 @@
+library(reticulate)
+
+use_virtualenv("env")
+
+source_python("predictor.py")
+
+
+
+df_real <- as.data.frame(read_excel("./data_modelo/master.xlsx"))
+
+
+real_activa <- df_real%>%
+  select(FECHA,ACTIVA)%>%
+  ungroup()
+
+real_pasiva <- df_pasiva%>%
+  select(FECHA,PASIVA)%>%
+  ungroup()
+
+y_pasiva <- y_maker(real_pasiva)
+y_activa <- y_maker(real_activa)
+
+
+mod_pasiva <- model_gen(y_pasiva,1,1,1,1,0,1,0)
+mod_activa <- model_gen(y_activa,1,1,1,1,0,1,0)
+
+
+forecast_activa <- forecaster(mod_activa,31)
+forecast_pasiva <- forecaster(mod_pasiva,31)
+
+
+forecast_to_df(forecast_activa, "activa",real_activa)
+forecast_to_df(forecast_pasiva, "pasiva",real_pasiva)

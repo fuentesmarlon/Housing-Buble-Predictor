@@ -1,0 +1,81 @@
+library(shiny)
+library(shinydashboard)
+library(shinyWidgets)
+
+
+shinyUI(
+  dashboardPage(
+    skin="green",
+    dashboardHeader(
+      #Title Name when Collapsed
+      title = tagList(
+        tags$span(
+          class = "logo-mini", "HB"
+        ),
+        tags$span(
+          class = "logo-lg", "Guatemala Housing Bubble"
+        )
+      )
+    ),
+    dashboardSidebar(
+      sidebarMenu(
+        id="menu",
+        menuItem("summary",tabName = "summary",icon=icon("book")),
+        menuItem("Predictor",tabName="predictor",icon=icon("brain"))
+      )
+      
+    ),
+    dashboardBody(
+      tabItems(
+        tabItem(
+          
+          #### Summary ####
+          tabName="summary",
+          
+          #Housing Title 
+          fluidRow(
+            column(
+              width=12, 
+              strong(h3("Predictor Summary"))
+            )
+          ),
+          
+          # Chart
+          fluidRow(
+            column(
+              width=12, 
+              tabsetPanel(
+                tabPanel(
+                  "Trend",
+                  fluidRow(
+                    column(
+                      width=12, 
+                      highchartOutput("predictor_graph")
+                    )
+                    
+                  
+                    
+                  )
+                ),
+                tabPanel(
+                  "Data Detail",
+                  fluidRow(
+                    
+                  )
+                )
+              )
+            )
+            
+            
+          )
+        ),
+        
+        #### PREDICTOR ####
+        tabItem(
+          tabName = "predictor"
+        )
+      ),
+      tags$script(HTML("$('body').addClass('sidebar-mini');"))
+    )
+  )
+)

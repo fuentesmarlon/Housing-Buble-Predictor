@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1635903104840.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F15852BF",
+    "lastKnownWriteTime" : 1635978205,
+    "last_content_update" : 1635978205358,
+    "path" : "~/Tesis/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "2,43",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
